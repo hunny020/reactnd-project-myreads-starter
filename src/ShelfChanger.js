@@ -28,10 +28,14 @@ state = {
     const markedBooks = this.props.markedBooks
     let shelfValue = ""
 
-    for (let book in markedBooks) {
+    if (markedBooks != undefined) {
+      for (let book in markedBooks) {
         if (markedBooks[book].title === currentBook.title) {
           shelfValue = markedBooks[book].shelf
         }
+      }
+    } else {
+      shelfValue = currentBook.shelf
     }
 
     return (
