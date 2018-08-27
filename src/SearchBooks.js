@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import * as BooksAPI from './BooksAPI'
 import DisplayBooks from './DisplayBooks'
+import {DebounceInput} from 'react-debounce-input';
 
 class SearchBooks extends Component {
   state = {
@@ -20,11 +21,9 @@ class SearchBooks extends Component {
         books: books
       }))
     })}
-    console.log("books search", this.state.books)
   }
 
 updateBooks = () => {
-
 }
 
 componentDidMount() {
@@ -42,11 +41,12 @@ componentDidMount() {
         <div className="search-books-bar">
           <Link className="close-search" to="/">Close</Link>
           <div className="search-books-input-wrapper">
-            <input
-              type="text"
+            <DebounceInput
+              minLength={1}
+              debounceTimeout={300}
               placeholder="Search by title or author"
               value={this.state.query}
-              onChange={(event) => this.searchBooks(event.target.value)}/>
+              onChange={(event) => this.searchBooks(event.target.value)} />
           </div>
         </div>
         {this.state.books.length !== undefined && this.state.query !== "" && this.state.books.length !== 0 && (

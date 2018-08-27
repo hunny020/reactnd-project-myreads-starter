@@ -18,7 +18,7 @@ class DisplayBooks extends Component {
         <div className="bookshelf-books">
           <ol className="books-grid">
             {books.map((book) => (
-              <li key={book.industryIdentifiers ? book.industryIdentifiers[0].identifier: Math.random()}>
+              <li key={book.id}>
                 <div className="book">
                   <div className="book-top">
                     {book.imageLinks && book.imageLinks.thumbnail ?
@@ -34,7 +34,7 @@ class DisplayBooks extends Component {
                     </div>
                   </div>
                   <div className="book-title">{book.title}</div>
-                  <div className="book-authors">{"authors" in book ? book.authors[0]: "Unknown"}</div>
+                  <div className="book-authors">{book.authors ? book.authors.join(', ') : 'unknown'}</div>
                 </div>
               </li>
             ))}

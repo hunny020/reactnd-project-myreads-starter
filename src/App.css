@@ -119,6 +119,14 @@ body, .app {
   text-align: left;
 }
 
+.error-bg {
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+}
+
 .book {
   width: 140px;
 }
@@ -129,6 +137,7 @@ body, .app {
 }
 .book-title {
   margin-top: 10px;
+  color: #6F19EC;
 }
 .book-authors {
   color: #0B610B;

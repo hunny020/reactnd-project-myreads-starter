@@ -3,10 +3,6 @@ import * as BooksAPI from './BooksAPI'
 
 class ShelfChanger extends Component {
 
-state = {
-  shelf: ''
-}
-
   updateShelf = (currBook, shelf) => {
     BooksAPI.update(currBook, shelf)
     this.setState(()=> ({
@@ -15,20 +11,12 @@ state = {
     this.props.onChangeShelf(currBook, shelf)
   }
 
-  componentDidMount() {
-    this.setState(() => (
-      {
-        shelf: this.props.currentBook.shelf
-      }
-    ))
-  }
-
   render() {
     const currentBook = this.props.currentBook
     const markedBooks = this.props.markedBooks
     let shelfValue = ""
 
-    if (markedBooks != undefined) {
+    if (markedBooks !== undefined) {
       for (let book in markedBooks) {
         if (markedBooks[book].title === currentBook.title) {
           shelfValue = markedBooks[book].shelf
