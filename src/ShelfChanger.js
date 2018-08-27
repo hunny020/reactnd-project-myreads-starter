@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import * as BooksAPI from './BooksAPI'
 
 class ShelfChanger extends Component {
@@ -24,11 +24,12 @@ state = {
   }
 
   render() {
-    const { title, currentBook, onChangeShelf, markedBooks } = this.props
+    const currentBook = this.props.currentBook
+    const markedBooks = this.props.markedBooks
     let shelfValue = ""
 
     for (let book in markedBooks) {
-        if (markedBooks[book].title == currentBook.title) {
+        if (markedBooks[book].title === currentBook.title) {
           shelfValue = markedBooks[book].shelf
         }
     }

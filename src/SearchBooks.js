@@ -49,7 +49,7 @@ componentDidMount() {
               onChange={(event) => this.searchBooks(event.target.value)}/>
           </div>
         </div>
-        {this.state.books.length !== undefined && this.state.books.length !== 0 && (
+        {this.state.books.length !== undefined && this.state.query !== "" && this.state.books.length !== 0 && (
         <DisplayBooks
           shelfTitle="Results"
           shelfBooks={this.state.books}
